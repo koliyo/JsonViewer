@@ -11,16 +11,32 @@ namespace Texnomic.Blazor.JsonViewer
         [Inject]
         protected IJSRuntime JsRuntime { get; set; }
 
-        protected string ID { get; private set; }
+        public string ID { get; private set; }
 
         public JsonViewerBase()
         {
             ID = Guid.NewGuid().ToString().Replace("-", "");
         }
 
-        public async ValueTask Render(string Json)
+        public ValueTask Render(string json)
         {
-            await JsRuntime.InvokeVoidAsync("Texnomic.Blazor.JsonViewer", $"#{ID}", Json);
+            return JsRuntime.InvokeVoidAsync("Texnomic.Blazor.JsonViewer.SetData", ID, json);
         }
+
+        public ValueTask Collapse(string filter)
+        {
+            return JsRuntime.InvokeVoidAsync("Texnomic.Blazor.JsonViewer.Collapse", ID, filter);
+        }
+
+        public ValueTask Expand(string filter)
+        {
+            return JsRuntime.InvokeVoidAsync("Texnomic.Blazor.JsonViewer.Expand", ID, filter);
+        }
+
+        public ValueTask Filter(string filter)
+        {
+            return JsRuntime.InvokeVoidAsync("Texnomic.Blazor.JsonViewer", ID, filter);
+        }
+
     }
 }
