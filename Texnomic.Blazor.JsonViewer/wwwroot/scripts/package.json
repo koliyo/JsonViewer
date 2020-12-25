@@ -4,12 +4,14 @@
   "description": "ASP.NET Core JsonViewer Component for Server-Side Blazor Based-on Alenaksu's Json-Viewer.",
   "main": "index.js",
   "dependencies": {
-    "@alenaksu/json-viewer": "^0.1.0"
+    "@alenaksu/json-viewer": "^0.2.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browserify": "^17.0.0"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-	"build": "browserify index.js > JsonViewer.js"
+    "build": "browserify index.js > JsonViewer.js"
   },
   "repository": {
     "type": "git",
