@@ -35,7 +35,7 @@ namespace Texnomic.Blazor.JsonViewer
 
         public ValueTask Filter(string filter)
         {
-            return JsRuntime.InvokeVoidAsync("Texnomic.Blazor.JsonViewer", ID, filter);
+            return JsRuntime.InvokeVoidAsync("Texnomic.Blazor.JsonViewer.Filter", ID, filter);
         }
 
     }
